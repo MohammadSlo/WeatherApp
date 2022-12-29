@@ -1,0 +1,38 @@
+
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" name="cityName" [(ngModel)]="cityName" id="" placeholder="search a city ..">
+  </form>
+</div>
+
+<div class="app-container">
+  <div class="city">
+    <span>{{weatherData.location.city}}</span>
+    <span class="temp-main">
+      {{weatherData.current_observation.condition.temperature}}  °C
+    </span>
+  </div>
+
+  <div class="upper-info">
+    <img *ngIf="weatherData.current_observation.condition.temperature < 30" src="../assets/cold.jpg" alt="">
+    <img *ngIf="weatherData.current_observation.condition.temperature > 25" src="../assets/warm.jpg" alt="">
+  </div>
+  <div class="lower-info">
+    <div class="min-temp">
+      <img src="../assets/min.png" alt="">
+      <p>{{weatherData.forecasts[2].low}} °C</p>
+    </div>
+    <div>
+      <img src="../assets/max.png" alt="">
+      {{weatherData.forecasts[2].high}} °C
+    </div>
+    <div>
+      <img src="../assets/wind.png" alt="">
+      {{weatherData.current_observation.wind.speed}} km/h
+    </div>
+    <div>
+      <img src="../assets/hum.png" alt="">
+      {{weatherData.current_observation.atmosphere.humidity}} %
+    </div>
+  </div>
+</div>
